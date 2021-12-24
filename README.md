@@ -1,6 +1,6 @@
 Work on progress
 # In Development :
-[x] User register and auth
-[x] Master Class
-[ ] User Level Priviledges
-[x] Change identity information 
+- [x] User register and auth <br>
+- [x] Master Class <br>
+- [ ] User Level Priviledges <br>
+- [x] Change identity information <br>
