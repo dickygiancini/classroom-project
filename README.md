@@ -13,3 +13,4 @@ Work on progress
 - [ ] Extracuriculum
 - [ ] Students Final Score
 - [ ] Online Classroom (Need more studies for this)
+- [ ] Set different primary key for each users with unique identifier
