@@ -27,7 +27,9 @@ Route::middleware('auth')->group(function () {
     Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], function(){
         Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
 
-        Route::get('master-kelas', [\App\Http\Controller\Master\MasterKelasController::class, 'index'])->name('masterkelas.index');
+        Route::get('master-kelas', [\App\Http\Controllers\Master\MasterKelasController::class, 'index'])->name('masterkelas.index');
+        Route::get('master-kelas-data', [\App\Http\Controllers\Master\MasterKelasController::class, 'index'])->name('masterkelas.getData');
+        Route::post('master-kelas', [\App\Http\Controllers\Master\MasterKelasController::class, 'create'])->name('masterkelas.create');
     });
 
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
