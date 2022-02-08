@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
         Route::get('master-kelas', [\App\Http\Controllers\Master\MasterKelasController::class, 'index'])->name('masterkelas.index');
         Route::get('master-kelas-data', [\App\Http\Controllers\Master\MasterKelasController::class, 'index'])->name('masterkelas.getData');
         Route::post('master-kelas', [\App\Http\Controllers\Master\MasterKelasController::class, 'create'])->name('masterkelas.create');
+        Route::delete('master-kelas/{id}', [\App\Http\Controllers\Master\MasterKelasController::class, 'delete'])->name('masterkelas.delete');
     });
 
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');

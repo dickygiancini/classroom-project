@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+<meta name="csrf-token" content="{{ csrf_token() }}">
 @section('title', 'Create Class')
 @section('content')
 
@@ -35,7 +36,7 @@
                         <td>{{ $item->kodekelas }}</td>
                         <td>{{ $item->created_at }}</td>
                         <td>{{ $item->updated_at }}</td>
-                        <td><button type="button" class="btn btn-sm btn-danger" onclick="test()">Danger</button></td>
+                        <td><button type="button" class="btn btn-sm btn-danger text-white" onclick="deletes({{ $item->id }})">Delete</button></td>
                     </tr>
                 @endforeach
             </tbody>
@@ -74,9 +75,15 @@
 </div>
 @endsection
 <script type="text/javascript">
-    function test()
+    var httpRequest = new XMLHttpRequest();
+    token = document.querySelector('meta[name="csrf-token"]').content;
+
+    function deletes(id)
     {
-        Swal.fire({
+        var url = '{{ route("admin.masterkelas.delete", ":id") }}';
+        url = url.replace(':id', id);
+
+        swal.fire({
             title: 'Yakin untuk menghapus?',
             text: "Anda tidak dapat mengembalikan data yang telah dihapus",
             icon: 'warning',
@@ -86,7 +93,21 @@
             confirmButtonText: 'Ya, hapus!'
             }).then((result) => {
             if (result.isConfirmed) {
+                httpRequest.open('DELETE', url, true);
+                httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+                httpRequest.setRequestHeader('X-CSRF-TOKEN', token);
+                httpRequest.send();
 
+                swal.fire({
+                    icon: 'success',
+                    title: 'Sukses!',
+                    text: 'Berhasil hapus data'
+                }).then((result) => {
+                    if(result.isConfirmed)
+                    {
+                        location.reload()
+                    }
+                })
             }
         })
     }

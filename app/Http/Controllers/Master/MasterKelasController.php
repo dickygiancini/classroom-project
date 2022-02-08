@@ -32,6 +32,14 @@ class MasterKelasController extends Controller
         return back()->with(['success' => 'Success entry kelas']);
     }
 
+    public function delete($id)
+    {
+        // dd($id);
+        $delete = MasterKelas::destroy($id);
+
+        return response()->json(['success' => 'Berhasil hapus data kelas'], 200);
+    }
+
     public function getData()
     {
         return Datatables::of(MasterKelas::query())

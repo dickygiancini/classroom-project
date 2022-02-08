@@ -1,2 +1,2 @@
 require('./bootstrap');
-const Swal = window.swal = require('sweetalert2');
+const swal = window.swal = require('sweetalert2');
