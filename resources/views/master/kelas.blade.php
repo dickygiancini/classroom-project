@@ -35,6 +35,7 @@
                         <td>{{ $item->kodekelas }}</td>
                         <td>{{ $item->created_at }}</td>
                         <td>{{ $item->updated_at }}</td>
+                        <td><button type="button" class="btn btn-sm btn-danger" onclick="test()">Danger</button></td>
                     </tr>
                 @endforeach
             </tbody>
@@ -72,3 +73,21 @@
     </div>
 </div>
 @endsection
+<script type="text/javascript">
+    function test()
+    {
+        Swal.fire({
+            title: 'Yakin untuk menghapus?',
+            text: "Anda tidak dapat mengembalikan data yang telah dihapus",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, hapus!'
+            }).then((result) => {
+            if (result.isConfirmed) {
+
+            }
+        })
+    }
+</script>
