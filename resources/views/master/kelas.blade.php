@@ -24,8 +24,9 @@
                     <th scope="col">No</th>
                     <th scope="col">Nama Kelas</th>
                     <th scope="col">Kode Kelas</th>
+                    <th scope="col">Tingkat</th>
                     <th scope="col">Tanggal Dibuat</th>
-                    <th scope="col">Tanggal Diubah</th>
+                    <th scope="col">Act.</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,8 +35,8 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $item->namakelas }}</td>
                         <td>{{ $item->kodekelas }}</td>
+                        <td>{{ $item->tingkat }}</td>
                         <td>{{ $item->created_at }}</td>
-                        <td>{{ $item->updated_at }}</td>
                         <td><button type="button" class="btn btn-sm btn-danger text-white" onclick="deletes({{ $item->id }})">Delete</button></td>
                     </tr>
                 @endforeach
@@ -62,7 +63,15 @@
                 </div>
                 <div class="mb-3">
                   <label for="kodekelas" class="form-label">Kode Kelas</label>
-                  <input type="text" class="form-control" name="kodekelas" aria-describedby="kodekelas" required>
+                  <input type="text" class="form-control" name="kodekelas" aria-describedby="kodekelas" required onkeyup="this.value = this.value.toUpperCase();">
+                </div>
+                <div class="mb-3">
+                  <label for="tingkat" class="form-label">Tingkat</label>
+                  <select name="tingkat" id="tingkat" class="form-select" required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                  </select>
                 </div>
             </div>
             <div class="modal-footer">

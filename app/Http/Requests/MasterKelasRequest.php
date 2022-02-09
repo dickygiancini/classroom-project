@@ -27,7 +27,8 @@ class MasterKelasRequest extends FormRequest
         return [
             //
             'namakelas' => ['required'],
-            'kodekelas' => ['required', 'unique:masterkelas,kodekelas']
+            'kodekelas' => ['required', 'unique:masterkelas,kodekelas'],
+            'tingkat' => ['required'],
         ];
     }
 }

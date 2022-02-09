@@ -27,6 +27,7 @@ class MasterKelasController extends Controller
         $create = MasterKelas::create([
             'namakelas' => $request->namakelas,
             'kodekelas' => $request->kodekelas,
+            'tingkat' => $request->tingkat,
         ]);
 
         return back()->with(['success' => 'Success entry kelas']);
