@@ -29,6 +29,8 @@ Route::middleware('auth')->group(function () {
 
         Route::get('master-kelas', [\App\Http\Controllers\Master\MasterKelasController::class, 'index'])->name('masterkelas.index');
         Route::post('master-kelas', [\App\Http\Controllers\Master\MasterKelasController::class, 'create'])->name('masterkelas.create');
+        Route::put('master-kelas/{id}', [\App\Http\Controllers\Master\MasterKelasController::class, 'edit'])->name('masterkelas.edit');
+        Route::post('master-kelas-update', [\App\Http\Controllers\Master\MasterKelasController::class, 'update'])->name('masterkelas.update');
         Route::delete('master-kelas/{id}', [\App\Http\Controllers\Master\MasterKelasController::class, 'delete'])->name('masterkelas.delete');
 
         Route::get('master-pelajaran', [\App\Http\Controllers\Master\MasterPelajaranController::class, 'index'])->name('masterpelajaran.index');

@@ -33,6 +33,18 @@ class MasterKelasController extends Controller
         return back()->with(['success' => 'Success entry kelas']);
     }
 
+    public function edit($id)
+    {
+        $edit = MasterKelas::find($id);
+
+        return response()->json($edit, 200);
+    }
+
+    public function update(MasterKelasRequest $request)
+    {
+        dd($request->all());
+    }
+
     public function delete($id)
     {
         // dd($id);

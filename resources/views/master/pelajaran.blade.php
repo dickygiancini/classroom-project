@@ -73,42 +73,48 @@
     </div>
 </div>
 @endsection
-<script type="text/javascript">
 
-    function deletes(id)
-    {
-        var url = '{{ route("admin.masterpelajaran.delete", ":id") }}';
-        url = url.replace(':id', id);
+@once
+    @push('scripts')
 
-        swal.fire({
-            title: 'Yakin untuk menghapus?',
-            text: "Anda tidak dapat mengembalikan data yang telah dihapus",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya, hapus!'
-            }).then((result) => {
-            if (result.isConfirmed) {
+        <script type="text/javascript">
 
-                $.ajax({
-                    type: 'DELETE',
-                    url: url,
-                    success: (data) => {
-                        swal.fire({
-                            icon: 'success',
-                            title: 'Sukses!',
-                            text: 'Berhasil hapus data'
-                        }).then((result) => {
-                            if(result.isConfirmed)
-                            {
-                                location.reload()
+            function deletes(id)
+            {
+                var url = '{{ route("admin.masterpelajaran.delete", ":id") }}';
+                url = url.replace(':id', id);
+
+                swal.fire({
+                    title: 'Yakin untuk menghapus?',
+                    text: "Anda tidak dapat mengembalikan data yang telah dihapus",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya, hapus!'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+
+                        $.ajax({
+                            type: 'DELETE',
+                            url: url,
+                            success: (data) => {
+                                swal.fire({
+                                    icon: 'success',
+                                    title: 'Sukses!',
+                                    text: 'Berhasil hapus data'
+                                }).then((result) => {
+                                    if(result.isConfirmed)
+                                    {
+                                        location.reload()
+                                    }
+                                })
                             }
                         })
                     }
                 })
             }
-        })
-    }
 
-</script>
+        </script>
+    @endpush
+@endonce
