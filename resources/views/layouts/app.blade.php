@@ -82,6 +82,18 @@
     </footer>
 </div>
 <script src="{{ asset('js/coreui.bundle.min.js') }}"></script>
+<script src="{{ asset('js/jquery.min.js') }}"></script>
 <script src="{{ asset('js/app.js') }}" defer></script>
+<script>
+$(document).ready(function() {
+
+  $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+  });
+
+});
+</script>
 </body>
 </html>

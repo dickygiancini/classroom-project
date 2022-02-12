@@ -74,8 +74,6 @@
 </div>
 @endsection
 <script type="text/javascript">
-    var httpRequest = new XMLHttpRequest();
-    token = document.querySelector('meta[name="csrf-token"]').content;
 
     function deletes(id)
     {
@@ -92,22 +90,25 @@
             confirmButtonText: 'Ya, hapus!'
             }).then((result) => {
             if (result.isConfirmed) {
-                httpRequest.open('DELETE', url, true);
-                httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-                httpRequest.setRequestHeader('X-CSRF-TOKEN', token);
-                httpRequest.send();
 
-                swal.fire({
-                    icon: 'success',
-                    title: 'Sukses!',
-                    text: 'Berhasil hapus data'
-                }).then((result) => {
-                    if(result.isConfirmed)
-                    {
-                        location.reload()
+                $.ajax({
+                    type: 'DELETE',
+                    url: url,
+                    success: (data) => {
+                        swal.fire({
+                            icon: 'success',
+                            title: 'Sukses!',
+                            text: 'Berhasil hapus data'
+                        }).then((result) => {
+                            if(result.isConfirmed)
+                            {
+                                location.reload()
+                            }
+                        })
                     }
                 })
             }
         })
     }
+
 </script>
