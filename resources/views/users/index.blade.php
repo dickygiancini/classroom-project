@@ -17,6 +17,7 @@
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">NIS/NPT</th>
+                    <th scope="col">Level</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -25,6 +26,25 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->nik }}</td>
+                        <td>
+                            @switch($user->user_level)
+                                @case('1')
+                                    IT Admin
+                                @break
+
+                                @case('2')
+                                    Kepsek, Wakasek
+                                @break
+
+                                @case('3')
+                                    Guru
+                                @break
+
+                                @case('5')
+                                    Siswa
+                                @break
+                            @endswitch
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>
