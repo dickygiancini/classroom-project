@@ -8,12 +8,12 @@
 
 <div class="row mb-2">
     <div class="col d-flex flex-row-reverse">
-        <button type="button" class="btn btn-primary" data-coreui-toggle="modal" data-coreui-target="#tambahKelas"><span class="cil-contrast btn-icon mr-2"></span>Add Class</button>
+        <button type="button" class="btn btn-primary" data-coreui-toggle="modal" data-coreui-target="#tambahKelas"><span class="cil-contrast btn-icon mr-2"></span>Add Pelajaran</button>
     </div>
 </div>
 <div class="card mb-4">
     <div class="card-header">
-        {{ __('List Kelas Siswa') }}
+        {{ __('List Pelajaran Siswa') }}
     </div>
 
     <div class="card-body">
@@ -22,20 +22,18 @@
             <thead>
                 <tr>
                     <th scope="col">No</th>
-                    <th scope="col">Nama Kelas</th>
-                    <th scope="col">Kode Kelas</th>
-                    <th scope="col">Tingkat</th>
+                    <th scope="col">Nama Pelajaran</th>
+                    <th scope="col">Kode Pelajaran</th>
                     <th scope="col">Tanggal Dibuat</th>
                     <th scope="col">Act.</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($kelas as $item)
+                @foreach ($pelajaran as $item)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $item->namakelas }}</td>
-                        <td>{{ $item->kodekelas }}</td>
-                        <td>{{ $item->tingkat }}</td>
+                        <td>{{ $item->nama }}</td>
+                        <td>{{ $item->kode }}</td>
                         <td>{{ $item->created_at }}</td>
                         <td><button type="button" class="btn btn-sm btn-danger text-white" onclick="deletes({{ $item->id }})">Delete</button></td>
                     </tr>
@@ -51,27 +49,19 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="tambahKelasLabel">Tambah Kelas</h5>
+          <h5 class="modal-title" id="tambahKelasLabel">Tambah Pelajaran</h5>
           <button type="button" class="btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form action="{{ route('admin.masterkelas.create') }}" method="POST">
+        <form action="{{ route('admin.masterpelajaran.create') }}" method="POST">
             @csrf
             <div class="modal-body">
                 <div class="mb-3">
-                  <label for="namaKelas" class="form-label">Nama Kelas</label>
-                  <input type="text" class="form-control" name="namakelas" aria-describedby="namakelas" required>
+                  <label for="nama" class="form-label">Nama Pelajaran</label>
+                  <input type="text" class="form-control" name="nama" aria-describedby="nama" required>
                 </div>
                 <div class="mb-3">
-                  <label for="kodekelas" class="form-label">Kode Kelas</label>
-                  <input type="text" class="form-control" name="kodekelas" aria-describedby="kodekelas" required onkeyup="this.value = this.value.toUpperCase();" autocomplete="off">
-                </div>
-                <div class="mb-3">
-                  <label for="tingkat" class="form-label">Tingkat</label>
-                  <select name="tingkat" id="tingkat" class="form-select" required>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                  </select>
+                  <label for="kode" class="form-label">Kode Pelajaran</label>
+                  <input type="text" class="form-control" name="kode" aria-describedby="kode" required onkeyup="this.value = this.value.toUpperCase();" autocomplete="off">
                 </div>
             </div>
             <div class="modal-footer">
@@ -89,7 +79,7 @@
 
     function deletes(id)
     {
-        var url = '{{ route("admin.masterkelas.delete", ":id") }}';
+        var url = '{{ route("admin.masterpelajaran.delete", ":id") }}';
         url = url.replace(':id', id);
 
         swal.fire({

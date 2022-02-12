@@ -42,6 +42,14 @@
                     Master Kelas
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.masterpelajaran.index') }}" target="_top">
+                    <svg class="nav-icon">
+                        <use xlink:href="{{ asset('icons/coreui.svg#cil-bug') }}"></use>
+                    </svg>
+                    Master Pelajaran
+                </a>
+            </li>
         </ul>
     </li>
     @endif

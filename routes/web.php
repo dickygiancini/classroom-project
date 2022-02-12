@@ -28,9 +28,12 @@ Route::middleware('auth')->group(function () {
         Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
 
         Route::get('master-kelas', [\App\Http\Controllers\Master\MasterKelasController::class, 'index'])->name('masterkelas.index');
-        Route::get('master-kelas-data', [\App\Http\Controllers\Master\MasterKelasController::class, 'index'])->name('masterkelas.getData');
         Route::post('master-kelas', [\App\Http\Controllers\Master\MasterKelasController::class, 'create'])->name('masterkelas.create');
         Route::delete('master-kelas/{id}', [\App\Http\Controllers\Master\MasterKelasController::class, 'delete'])->name('masterkelas.delete');
+
+        Route::get('master-pelajaran', [\App\Http\Controllers\Master\MasterPelajaranController::class, 'index'])->name('masterpelajaran.index');
+        Route::post('master-pelajaran', [\App\Http\Controllers\Master\MasterPelajaranController::class, 'create'])->name('masterpelajaran.create');
+        Route::delete('master-pelajaran/{id}', [\App\Http\Controllers\Master\MasterPelajaranController::class, 'delete'])->name('masterpelajaran.delete');
     });
 
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
