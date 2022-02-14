@@ -17,7 +17,7 @@ class AdminOnlyAccess
     public function handle(Request $request, Closure $next)
     {
 
-        if(auth()->user()->user_level == 5)
+        if(auth()->user()->user_level != 1)
         {
             abort(403);
         }
